@@ -19,32 +19,32 @@ class PublicWebsiteController extends Controller
      */
     public function home(): View
     {
-        $services = Service::active()->take(4)->get();
+        $services = Service::active()->orderBy('display_order')->take(6)->get();
         $caseStudies = CaseStudy::published()->where('is_featured', true)->take(3)->get();
         if ($caseStudies->isEmpty()) {
             $caseStudies = CaseStudy::published()->take(3)->get();
         }
         $testimonials = Testimonial::published()->where('is_featured', true)->take(4)->get();
-        $faqs = Faq::published()->take(6)->get();
+        $faqs = Faq::published()->orderBy('display_order')->take(7)->get();
 
         // Dynamically manageable page content
-        $heroBadge = PageContent::get('home', 'hero', 'badge', 'The International Media Placement Agency');
-        $heroHeadline = PageContent::get('home', 'hero', 'headline', 'Your name in the byline. Your story where buyers read.');
-        $heroSubtitle = PageContent::get('home', 'hero', 'subtitle', 'We help founders, CEOs, and industry pioneers build enduring market credibility through professionally authored profiles, curated list rankings, and high-impact byline articles.');
-        $heroCtaPrimary = PageContent::get('home', 'hero', 'cta_primary_text', 'Get Featured');
-        $heroCtaLink = PageContent::get('home', 'hero', 'cta_primary_link', '/contact');
+        $heroBadge = PageContent::get('home', 'hero', 'badge', 'Trusted by growing brands across the US, UK & Canada');
+        $heroHeadline = PageContent::get('home', 'hero', 'headline', 'We Turn Your Story Into Lasting Visibility');
+        $heroSubtitle = PageContent::get('home', 'hero', 'subtitle', 'Veyora Media is a PR and content agency that helps brands get noticed. We write, pitch, and publish your story on trusted media platforms, so the right audience finds you and remembers you.');
+        $heroCtaPrimary = PageContent::get('home', 'hero', 'cta_primary_text', 'Get Started ↗');
+        $heroCtaLink = PageContent::get('home', 'hero', 'cta_primary_link', '#contact');
 
-        $introEyebrow = PageContent::get('home', 'intro', 'eyebrow', 'Editorial Authority vs. Fleeting Ads');
-        $introHeading = PageContent::get('home', 'intro', 'heading', 'In a world crowded with noise, true editorial credibility cannot be faked.');
-        $introBody = PageContent::get('home', 'intro', 'body', 'Buyers, investors, and enterprise decision-makers ignore unsolicited sales emails and paid social ads. But when they find an in-depth article analyzing your company\'s achievements or an authoritative opinion piece under your byline in a reputable publication, skepticism evaporates.');
+        $introEyebrow = PageContent::get('home', 'intro', 'eyebrow', 'Built for Growth');
+        $introHeading = PageContent::get('home', 'intro', 'heading', 'A PR Partner Built for Growth');
+        $introBody = PageContent::get('home', 'intro', 'body', 'We help growing brands secure the visibility they deserve through honest, transparent media placement.');
 
-        $founderHeading = PageContent::get('home', 'founder', 'heading', '"Traditional PR is broken. We built a publishing model based on transparency, rigorous writing, and real deliverables."');
-        $founderBody = PageContent::get('home', 'founder', 'body', 'For decades, legacy PR agencies treated media coverage like an opaque mystery—charging massive retainers while promising only "efforts." At Byline Bridge, we operate like an elite editorial newsroom. We pair founders with veteran journalists, craft stories worthy of respected publications, and ensure you approve every sentence before it goes live.');
-        $founderName = PageContent::get('home', 'founder', 'author_name', 'Arthur Vance & Editorial Board');
-        $founderTitle = PageContent::get('home', 'founder', 'author_title', 'Managing Director, Byline Bridge');
+        $founderHeading = PageContent::get('home', 'founder', 'heading', 'Why Ambitious Brands Choose Veyora Media');
+        $founderBody = PageContent::get('home', 'founder', 'body', 'A simple, transparent process built around your growth.');
+        $founderName = PageContent::get('home', 'founder', 'author_name', 'Veyora Editorial Board');
+        $founderTitle = PageContent::get('home', 'founder', 'author_title', 'Editorial Team, Veyora Media');
 
-        $ctaHeading = PageContent::get('home', 'cta', 'heading', 'Your next breakthrough story deserves to be told.');
-        $ctaSubtitle = PageContent::get('home', 'cta', 'subtitle', 'Schedule a confidential narrative consultation to discuss suitable media placements, publication availability, and strategic timing for your brand.');
+        $ctaHeading = PageContent::get('home', 'cta', 'heading', 'Ready to Put Your Brand in the Spotlight?');
+        $ctaSubtitle = PageContent::get('home', 'cta', 'subtitle', 'Share your goals with us, and we’ll create a PR and content plan built around your story, your industry, and your audience.');
 
         return view('pages.home', compact(
             'services',
@@ -172,21 +172,21 @@ class PublicWebsiteController extends Controller
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
             'company' => ['nullable', 'string', 'max:255'],
-            'website' => ['nullable', 'url', 'max:255'],
+            'website' => ['nullable', 'max:255'],
             'service_id' => ['nullable', 'exists:services,id'],
+            'service_name' => ['nullable', 'string', 'max:255'],
             'target_publication' => ['nullable', 'string', 'max:255'],
             'budget_range' => ['nullable', 'string', 'max:100'],
-            'message' => ['required', 'string', 'min:10', 'max:5000'],
-            'privacy_consent' => ['required', 'accepted'],
+            'message' => ['required', 'string', 'min:5', 'max:5000'],
+            'privacy_consent' => ['nullable'],
         ], [
-            'privacy_consent.accepted' => 'You must agree to our privacy policy before submitting your enquiry.',
-            'message.min' => 'Please provide at least a brief summary of your background and goals (10+ characters).',
+            'message.min' => 'Please provide at least a brief summary of your brand and goals.',
         ]);
 
-        $serviceName = null;
+        $serviceName = $validated['service_name'] ?? null;
         if (! empty($validated['service_id'])) {
             $service = Service::find($validated['service_id']);
-            $serviceName = $service?->title;
+            $serviceName = $service?->title ?? $serviceName;
         }
 
         Enquiry::create([
@@ -205,7 +205,7 @@ class PublicWebsiteController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
-        return redirect()->route('contact')->with('success', 'Thank you for reaching out. Your confidential media consultation request has been received. Our editorial team will review your profile and respond within 24 business hours.');
+        return back()->with('success', 'Thank you! Your quote request has been received. Our team will review your brand details and reply with a tailored plan within 24 hours.');
     }
 
     /**

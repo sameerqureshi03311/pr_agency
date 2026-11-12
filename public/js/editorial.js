@@ -266,19 +266,68 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
+
+      // 8. Pullquotes & Stat Highlight Numbers Smooth Entrance
+      const pullquotes = document.querySelectorAll('.pullquote');
+      pullquotes.forEach(pq => {
+        gsap.from(pq, {
+          x: -24,
+          opacity: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: pq,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+
+      // 9. Editorial Commitments & Metric Counters
+      const commitmentCols = document.querySelectorAll('.border-top.border-secondary .col-md-4');
+      if (commitmentCols.length) {
+        gsap.from(commitmentCols, {
+          y: 25,
+          opacity: 0,
+          duration: 0.75,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: commitmentCols[0].parentElement,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
     }
   }
 
-  // 5. Micro-Interactions: Interactive 3D Subtle Tilt on Desktop
+  // 5. Reading Progress Bar (Top of Viewport)
+  const progressBar = document.getElementById('readingProgressBar');
+  if (progressBar) {
+    const updateProgress = () => {
+      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollTotal > 0) {
+        const progress = (window.scrollY / scrollTotal) * 100;
+        progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  // 6. Micro-Interactions: Interactive 3D Subtle Tilt on Desktop
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !prefersReducedMotion) {
     const cards = document.querySelectorAll('.editorial-card, .case-tile');
     cards.forEach(card => {
+      card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
+
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        const rotateX = (y / rect.height) * -6;
-        const rotateY = (x / rect.width) * 6;
+        const rotateX = (y / rect.height) * -5;
+        const rotateY = (x / rect.width) * 5;
         card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-5px)`;
       });
 

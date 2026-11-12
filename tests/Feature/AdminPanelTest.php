@@ -4,11 +4,21 @@ namespace Tests\Feature;
 
 use App\Models\Enquiry;
 use App\Models\User;
+use Database\Seeders\DatabaseSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class AdminPanelTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(DatabaseSeeder::class);
+    }
+
     public function test_guest_is_redirected_from_admin_dashboard_to_login(): void
     {
         $response = $this->get(route('admin.dashboard'));
@@ -18,15 +28,15 @@ class AdminPanelTest extends TestCase
     public function test_admin_can_login_with_valid_credentials(): void
     {
         $admin = User::firstOrCreate(
-            ['email' => 'admin@bylinebridge.com'],
+            ['email' => 'admin@veyoramedia.com'],
             [
-                'name' => 'Agency Administrator',
+                'name' => 'Veyora Administrator',
                 'password' => Hash::make('admin123'),
             ]
         );
 
         $response = $this->post(route('admin.login.submit'), [
-            'email' => 'admin@bylinebridge.com',
+            'email' => 'admin@veyoramedia.com',
             'password' => 'admin123',
         ]);
 
@@ -36,7 +46,7 @@ class AdminPanelTest extends TestCase
 
     public function test_authenticated_admin_can_view_dashboard(): void
     {
-        $admin = User::where('email', 'admin@bylinebridge.com')->first();
+        $admin = User::where('email', 'admin@veyoramedia.com')->first();
         if (! $admin) {
             $admin = User::factory()->create();
         }
@@ -50,20 +60,20 @@ class AdminPanelTest extends TestCase
 
     public function test_admin_can_create_new_service(): void
     {
-        $admin = User::where('email', 'admin@bylinebridge.com')->first();
+        $admin = User::where('email', 'admin@veyoramedia.com')->first();
         if (! $admin) {
             $admin = User::factory()->create();
         }
 
         $payload = [
-            'title' => 'Executive Podcast Tours',
-            'slug' => 'executive-podcast-tours',
-            'tagline' => 'High-ranking business podcast placements',
+            'title' => 'Executive Keynote Tours',
+            'slug' => 'executive-keynote-tours',
+            'tagline' => 'High-ranking business keynote placements',
             'badge' => 'New Service',
-            'short_description' => 'Guest appearances on top 1% technology and venture podcasts.',
-            'full_description' => '<p>Guaranteed bookings on targeted industry shows.</p>',
+            'short_description' => 'Guest appearances on top 1% technology and venture stages.',
+            'full_description' => '<p>Guaranteed bookings on targeted industry conferences.</p>',
             'features_text' => "Speaker one-sheet preparation\nTargeted host pitching\nPre-interview briefing",
-            'display_order' => 5,
+            'display_order' => 7,
             'is_active' => 1,
             'is_featured' => 0,
         ];
@@ -72,14 +82,14 @@ class AdminPanelTest extends TestCase
 
         $response->assertRedirect(route('admin.services.index'));
         $this->assertDatabaseHas('services', [
-            'slug' => 'executive-podcast-tours',
-            'title' => 'Executive Podcast Tours',
+            'slug' => 'executive-keynote-tours',
+            'title' => 'Executive Keynote Tours',
         ]);
     }
 
     public function test_admin_can_update_enquiry_status_and_add_notes(): void
     {
-        $admin = User::where('email', 'admin@bylinebridge.com')->first();
+        $admin = User::where('email', 'admin@veyoramedia.com')->first();
         if (! $admin) {
             $admin = User::factory()->create();
         }
@@ -117,22 +127,22 @@ class AdminPanelTest extends TestCase
 
     public function test_admin_can_update_page_content_and_settings(): void
     {
-        $admin = User::where('email', 'admin@bylinebridge.com')->first();
+        $admin = User::where('email', 'admin@veyoramedia.com')->first();
         if (! $admin) {
             $admin = User::factory()->create();
         }
 
         $settingsResponse = $this->actingAs($admin)->post(route('admin.settings.update'), [
             'settings' => [
-                'site_name' => 'Byline Bridge Agency',
-                'contact_email' => 'press@bylinebridge.com',
+                'site_name' => 'Veyora Media Agency',
+                'contact_email' => 'press@veyoramedia.com',
             ],
         ]);
 
         $settingsResponse->assertSessionHas('success');
         $this->assertDatabaseHas('site_settings', [
             'key' => 'site_name',
-            'value' => 'Byline Bridge Agency',
+            'value' => 'Veyora Media Agency',
         ]);
     }
 }

@@ -4,16 +4,17 @@
    ========================================================================== */
 
 :root {
-  --admin-sidebar-bg: #111317;
-  --admin-sidebar-text: #9EACB9;
-  --admin-sidebar-active: #C5A059;
-  --admin-sidebar-hover: #1E222A;
+  --admin-sidebar-bg: #0c0a1f;
+  --admin-sidebar-text: #a9a5c9;
+  --admin-sidebar-active: #ff7a59;
+  --admin-sidebar-hover: #17143a;
   
   --admin-topbar-bg: #FFFFFF;
   --admin-body-bg: #F4F6F9;
   --admin-card-border: #E5E9EE;
-  --admin-primary: #1E2530;
-  --admin-accent: #C5A059;
+  --admin-primary: #0c0a1f;
+  --admin-accent: #ff7a59;
+  --admin-purple: #a78bfa;
 }
 
 body.admin-body {

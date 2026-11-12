@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Portal') | Byline Bridge CMS</title>
+    <title>@yield('title', 'Admin Portal') | Veyora Media CMS</title>
     
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -18,11 +18,21 @@
     <div class="admin-wrapper">
         <!-- Sidebar Navigation -->
         <aside class="admin-sidebar" id="adminSidebar">
-            <a href="{{ route('admin.dashboard') }}" class="admin-sidebar-brand">
-                <span class="admin-brand-icon">B</span>
+            <a href="{{ route('admin.dashboard') }}" class="admin-sidebar-brand" style="gap: 12px;">
+                <svg viewBox="0 0 64 64" aria-hidden="true" style="width: 32px; height: 32px; flex: none;">
+                    <defs>
+                        <linearGradient id="avg1" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#a78bfa"/>
+                            <stop offset="1" stop-color="#ff7a59"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M11 14 L30 54 L43 28" fill="none" stroke="url(#avg1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="50" cy="13" r="12" fill="none" stroke="#ff7a59" stroke-opacity=".35" stroke-width="1.5"/>
+                    <circle cx="50" cy="13" r="6.5" fill="#ff7a59"/>
+                </svg>
                 <div>
-                    <div class="fw-bold fs-6 text-white leading-none">Byline Bridge</div>
-                    <div class="text-muted small" style="font-size: 0.72rem;">Agency CMS Portal</div>
+                    <div class="fw-bold fs-6 text-white leading-none">Veyora Media</div>
+                    <div class="text-muted small" style="font-size: 0.7rem; letter-spacing: 0.12em;">AGENCY CMS</div>
                 </div>
             </a>
 

@@ -1,98 +1,75 @@
 @extends('layouts.app')
 
-@section('title', 'Services & Media Placements | Byline Bridge')
-@section('meta_description', 'Explore Byline Bridge core PR services: Featured Profiles, Top-10 List Features, Byline Articles, and Full-Cycle Content Writing & Publishing.')
+@section('title', 'Services & Media Placements | Veyora Media')
+@section('meta_description', 'Explore Veyora Media core PR services: Press & Media Coverage, Television Features, Magazine Profiles, Podcast Guesting, Digital PR, and Online Reputation Management.')
 
 @section('content')
 
-    <!-- Header Banner — Monumental Typography -->
-    <section class="subpage-hero-banner position-relative overflow-hidden">
-        <div class="text-outline-bg cobalt-glow" style="top: 8%; right: -2%;">DELIVERABLES</div>
-        <div class="container text-center position-relative" style="z-index: 1;">
-            <span class="badge-rotated orange mb-3">Our Core Services</span>
-            <h1 class="display-monumental text-white mb-3">
-                <span class="word-stack">
-                    <span class="font-sans fw-900 text-uppercase" style="letter-spacing: -0.035em;">EXECUTIVE MEDIA PLACEMENT</span>
-                    <span class="font-serif fst-italic text-orange">& Editorial Publishing.</span>
-                </span>
-            </h1>
-            <p class="display-subtitle mx-auto text-white-50 fs-5" style="max-width: 720px;">
-                Each service is engineered to deliver verifiable digital equity, personal branding authority, and executive positioning on premier media outlets.
-            </p>
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="w">
+            <span class="bd">Services Catalog</span>
+            <h1>Services Built to Get You <i>Noticed</i></h1>
+            <p>Everything your brand needs to earn attention, build trust, and stay visible across the US, UK, and Canada.</p>
         </div>
     </section>
 
     <!-- Services Detailed Breakdown -->
-    <section class="section-pad-lg position-relative overflow-hidden">
-        <div class="container">
-            <div class="row g-5">
+    <section>
+        <div class="w">
+            <div style="display: grid; gap: 40px;">
                 @foreach($services as $index => $service)
-                    <div class="col-12">
-                        <div class="p-4 p-md-5 bg-white rounded border border-secondary border-opacity-10 shadow-sm position-relative overflow-hidden" style="border-top: 4px solid {{ $index % 2 === 1 ? 'var(--bb-cobalt)' : 'var(--bb-orange)' }} !important;">
-                            <div class="row g-5 align-items-center">
-                                <div class="col-lg-6 {{ $index % 2 === 1 ? 'order-lg-2' : '' }}">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <div class="giant-service-number {{ $index % 2 === 1 ? 'cobalt' : 'orange' }}">0{{ $index + 1 }}</div>
-                                        @if($service->badge)
-                                            <span class="badge-rotated {{ $index % 2 === 1 ? 'cobalt' : 'orange' }}">{{ $service->badge }}</span>
-                                        @endif
-                                    </div>
-                                    <h2 class="display-huge fs-2 mb-2 font-serif fw-bold">{{ $service->title }}</h2>
-                                    <div class="text-orange fw-bold mb-4 font-sans text-uppercase small" style="letter-spacing: 0.06em;">{{ $service->tagline }}</div>
-                                    <p class="fs-5 text-muted mb-4" style="line-height: 1.7;">
-                                        {{ $service->short_description }}
-                                    </p>
-
-                                    @if(!empty($service->features))
-                                        <div class="mb-4">
-                                            <h5 class="font-sans fs-6 fw-bold text-uppercase text-dark mb-3" style="letter-spacing: 0.05em;">Key Inclusions</h5>
-                                            <div class="row g-2">
-                                                @foreach($service->features as $feat)
-                                                    <div class="col-md-6">
-                                                        <div class="d-flex align-items-start gap-2 small text-muted">
-                                                            <i class="bi bi-check-circle-fill {{ $index % 2 === 1 ? 'text-cobalt' : 'text-orange' }} mt-1"></i>
-                                                            <span>{{ $feat }}</span>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                    <div class="card-dark" style="padding: 44px; position: relative; overflow: hidden; border-top: 3px solid {{ $index % 2 === 0 ? 'var(--ac)' : 'var(--pu)' }};">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 36px; align-items: center;">
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+                                    <span style="font-family: var(--sf); font-size: 32px; font-weight: 700; color: {{ $index % 2 === 0 ? 'var(--ac)' : 'var(--pu)' }};">
+                                        0{{ $index + 1 }}
+                                    </span>
+                                    @if($service->badge)
+                                        <span class="bd" style="font-size: 12px; padding: 4px 12px;">{{ $service->badge }}</span>
                                     @endif
-
-                                    <div class="d-flex flex-wrap gap-3 pt-3">
-                                        <a href="{{ route('services.detail', $service->slug) }}" class="btn btn-editorial-dark">
-                                            <span>Full Service Details</span>
-                                            <i class="bi bi-arrow-right"></i>
-                                        </a>
-                                        <a href="{{ route('contact', ['service' => $service->id]) }}" class="btn btn-hero-primary">
-                                            <span>Request Quote</span>
-                                        </a>
-                                    </div>
                                 </div>
 
-                                <div class="col-lg-6 {{ $index % 2 === 1 ? 'order-lg-1' : '' }}">
-                                    <div class="p-4 bg-ivory rounded border border-secondary border-opacity-10">
-                                        <h5 class="font-sans fs-6 fw-bold text-uppercase mb-4 text-dark d-flex align-items-center gap-2" style="letter-spacing: 0.06em;">
-                                            <i class="bi bi-diagram-3 {{ $index % 2 === 1 ? 'text-cobalt' : 'text-orange' }}"></i>
-                                            <span>Delivery Process Roadmap</span>
-                                        </h5>
-                                        @if(!empty($service->deliverables))
-                                            <div class="d-flex flex-column gap-3">
-                                                @foreach($service->deliverables as $del)
-                                                    <div class="p-3 bg-white rounded border border-secondary border-opacity-10">
-                                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                                            <span class="badge bg-dark text-white" style="font-size: 0.7rem;">{{ $del['phase'] }}</span>
-                                                            <span class="fw-bold small text-dark">{{ $del['title'] }}</span>
-                                                        </div>
-                                                        <div class="text-muted small">{{ $del['desc'] }}</div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        @else
-                                            <p class="text-muted small">Meticulous 4-stage drafting, review, pre-approval, and publication workflow.</p>
-                                        @endif
-                                    </div>
+                                <h2 style="text-align: left; font-size: clamp(24px, 3.5vw, 36px); margin-bottom: 8px;">
+                                    {{ $service->title }}
+                                </h2>
+
+                                <div style="color: var(--pu); font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 18px;">
+                                    {{ $service->tagline }}
                                 </div>
+
+                                <p style="color: var(--mut); font-size: 16px; line-height: 1.65; margin-bottom: 24px;">
+                                    {{ $service->short_description }}
+                                </p>
+
+                                <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                                    <a href="{{ route('services.detail', $service->slug) }}" class="btn bw">
+                                        <span>Full Details</span>
+                                        <span>↗</span>
+                                    </a>
+                                    <a href="{{ route('contact', ['service' => $service->id]) }}" class="btn bl">
+                                        <span>Get a Quote ↗</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Inclusions / Key Deliverables -->
+                            <div style="background: rgba(12, 10, 31, 0.6); border: 1px solid var(--bd); border-radius: 16px; padding: 28px;">
+                                <h4 style="font-family: var(--ss); font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #ffffff; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                                    <span style="color: var(--ac);">✦</span> What's Included
+                                </h4>
+
+                                @if(!empty($service->features))
+                                    <ul style="display: grid; gap: 12px;">
+                                        @foreach($service->features as $feat)
+                                            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: #d8d8e6;">
+                                                <i class="bi bi-check-circle-fill" style="color: var(--ac); margin-top: 2px; font-size: 14px;"></i>
+                                                <span>{{ $feat }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -101,18 +78,25 @@
         </div>
     </section>
 
-    <!-- Bottom CTA -->
-    <section class="section-pad-md bg-deep-ink text-center position-relative overflow-hidden border-top border-4 border-orange">
-        <div class="text-outline-bg orange-glow" style="top: 15%; left: 3%;">CAMPAIGN</div>
-        <div class="container position-relative" style="z-index: 1;">
-            <h2 class="display-huge text-white fs-2 mb-3">Custom Corporate Campaign?</h2>
-            <p class="text-white-50 fs-5 mb-4 max-w-700 mx-auto">
-                Need a multi-tier publishing program across several executives or regional markets? Our directors create custom publishing schedules.
-            </p>
-            <a href="{{ route('contact') }}" class="btn btn-hero-primary px-4 py-3">
-                <span>Contact Our Strategy Desk</span>
-                <i class="bi bi-arrow-right"></i>
-            </a>
+    <!-- CTA Section -->
+    <section style="background: var(--cd);">
+        <div class="w">
+            <div class="cta rv">
+                <div>
+                    <span class="bd" style="border-color: var(--bd); background: none;">Serving the US, UK & Canada</span>
+                    <h2 style="margin-top: 16px;">Need a Tailored <i>PR Package?</i></h2>
+                    <p>Every brand journey is unique. Reach out to our strategy desk and we’ll customize an editorial placement plan around your upcoming announcements.</p>
+                    <div class="bt">
+                        <a class="btn bk" href="{{ route('contact') }}">Get a Quote ↗</a>
+                        <a class="btn bl" href="{{ route('about') }}">Our Story ↗</a>
+                    </div>
+                </div>
+                <div class="fan" aria-hidden="true">
+                    <img src="{{ asset('images/covers/tech-cover.jpg') }}" alt="Tech cover">
+                    <img src="{{ asset('images/covers/finance-cover.jpg') }}" alt="Finance cover">
+                    <img src="{{ asset('images/covers/healthcare-cover.jpg') }}" alt="Healthcare cover">
+                </div>
+            </div>
         </div>
     </section>
 

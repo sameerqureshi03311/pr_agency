@@ -1,151 +1,59 @@
 @extends('layouts.app')
 
-@section('title', 'About Us | Byline Bridge Editorial Agency')
-@section('meta_description', 'Discover the story, editorial mission, and leadership team behind Byline Bridge—the international PR agency built on transparency, journalistic precision, and deliverable-backed placements.')
+@section('title', 'About Us | Veyora Media')
+@section('meta_description', 'Discover the story, mission, and publishing standards behind Veyora Media—the PR agency helping ambitious brands turn stories into lasting visibility.')
 
 @section('content')
 
-    <!-- Header Banner — Bold Typographic Introduction -->
-    <section class="subpage-hero-banner position-relative overflow-hidden">
-        <div class="text-outline-bg cobalt-glow" style="top: 10%; right: -2%;">MISSION</div>
-        <div class="container text-center position-relative" style="z-index: 1;">
-            <span class="badge-rotated orange mb-3">Our Mission & Philosophy</span>
-            <h1 class="display-monumental text-white mb-3">
-                <span class="word-stack">
-                    <span class="font-sans fw-900 text-uppercase" style="letter-spacing: -0.035em;">MEDIA PLACEMENT</span>
-                    <span class="font-serif fst-italic text-orange">Engineered for Discerning Leaders.</span>
-                </span>
-            </h1>
-            <p class="display-subtitle mx-auto text-white-50 fs-5" style="max-width: 720px;">
-                We bridge the divide between authentic executive achievement and high-authority digital press. Zero opaque retainers. Zero generic press releases. Just credible stories where enterprise buyers read.
-            </p>
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="w">
+            <span class="bd">Our Story & Mission</span>
+            <h1>Media Placement Built for <i>Growth</i></h1>
+            <p>We bridge the divide between real-world brand achievements and high-authority digital press across the US, UK, and Canada. Zero opaque retainers. 100% client pre-approval.</p>
         </div>
     </section>
 
     <!-- Narrative Section -->
-    <section class="section-pad-lg">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <span class="badge-rotated cobalt">Our Origin</span>
-                        <span class="eyebrow-badge">Founding Standard</span>
-                    </div>
-                    <h2 class="display-huge mb-4">
-                        <span class="d-block font-sans fw-900 text-uppercase" style="letter-spacing: -0.03em;">AN ANTIDOTE TO</span>
-                        <span class="d-block font-serif fst-italic text-orange">The Traditional PR Retainer.</span>
-                    </h2>
-                    <p class="fs-5 text-muted mb-4" style="line-height: 1.8;">
-                        Traditional public relations was invented for the era of print newspapers and broadcast television. Yet decades later, many agencies still operate on the same antiquated model: charging $10,000 to $20,000 every month on long-term retainers, while offering vague guarantees of "ongoing media pitching."
+    <section>
+        <div class="w">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center;">
+                <div>
+                    <span class="bd" style="margin-bottom: 16px;">The Veyora Origin</span>
+                    <h2 style="text-align: left; margin: 16px 0 20px;">An Antidote to the <i>Traditional PR Retainer</i></h2>
+                    <p style="color: var(--mut); font-size: 16.5px; line-height: 1.7; margin-bottom: 18px;">
+                        Traditional public relations was invented decades ago for a very different world. Yet today, many legacy agencies still operate on the same opaque model: charging $10,000 to $20,000 every month on long-term retainers while offering vague promises of "ongoing media outreach."
                     </p>
-                    <p class="text-muted mb-4">
-                        Byline Bridge was founded to challenge this opacity. We believe that executives and growing companies deserve clear deliverables, absolute control over their public narrative, and transparent publication placements that permanently enhance their digital equity.
+                    <p style="color: var(--mut); font-size: 16.5px; line-height: 1.7; margin-bottom: 18px;">
+                        Veyora Media was founded to challenge this opacity. We believe that ambitious founders, growing companies, and established brands deserve clear deliverables, absolute control over their public narrative, and transparent publication placements that permanently enhance their digital equity.
                     </p>
-                    <p class="text-muted">
-                        We function less like an advertising agency and more like an elite editorial bureau. Our team consists of seasoned financial, technology, and healthcare journalists who understand what publication editors require and how to position complex business models for maximum authority.
+                    <p style="color: var(--mut); font-size: 16.5px; line-height: 1.7;">
+                        We function like an elite editorial newsroom. Our team brings together veteran journalists, seasoned editors, and media strategists who understand what editors require and how to position your brand for lasting visibility.
                     </p>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="p-5 bg-dark-editorial rounded-4 text-white position-relative">
-                        <div class="text-orange fs-1 mb-3">
-                            <i class="bi bi-compass"></i>
-                        </div>
-                        <h3 class="font-serif fs-3 text-white mb-4">Our Three Guiding Tenets</h3>
-                        
-                        <div class="mb-4 pb-3 border-bottom border-secondary border-opacity-25">
-                            <div class="fw-bold fs-5 text-orange mb-1">1. Absolute Pre-Approval</div>
-                            <p class="text-muted-editorial small mb-0">
-                                Nothing is ever submitted or published without your explicit review and signoff. You retain complete ownership over every factual statement and quote.
-                            </p>
-                        </div>
+                <div class="card-dark" style="padding: 40px;">
+                    <div style="color: var(--ac); font-size: 32px; margin-bottom: 20px;"><i class="bi bi-compass"></i></div>
+                    <h3 style="font-size: 24px; margin-bottom: 24px;">Our Three Core Commitments</h3>
 
-                        <div class="mb-4 pb-3 border-bottom border-secondary border-opacity-25">
-                            <div class="fw-bold fs-5 text-cobalt mb-1">2. Journalistic Rigor</div>
-                            <p class="text-muted-editorial small mb-0">
-                                We write articles that respect the reader's intelligence. We do not produce self-serving corporate advertisements or fluffy keyword-stuffed blogs.
-                            </p>
-                        </div>
-
-                        <div>
-                            <div class="fw-bold fs-5 text-coral mb-1">3. Deliverable Accountability</div>
-                            <p class="text-muted-editorial small mb-0">
-                                You invest in confirmed, permanent placements on agreed-upon media outlets—not speculative hours or open-ended retainer fees.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Founder Philosophy Box -->
-    <section class="section-pad-lg bg-ivory-base">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="p-5 bg-white rounded border border-secondary border-opacity-10 shadow-sm text-center">
-                        <div class="text-coral fs-1 mb-3">
-                            <i class="bi bi-chat-square-quote"></i>
-                        </div>
-                        <h2 class="font-serif fs-2 mb-4" style="line-height: 1.4;">
-                            {{ $founderHeading }}
-                        </h2>
-                        <p class="text-muted fs-5 mb-4 max-w-700 mx-auto" style="line-height: 1.8;">
-                            {{ $founderBody }}
-                        </p>
-                        <div class="text-dark fw-bold">Arthur Vance</div>
-                        <div class="text-muted small">Managing Director, Byline Bridge</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Standards & Transparency Grid -->
-    <section class="section-pad-lg">
-        <div class="container">
-            <div class="text-center max-w-700 mx-auto mb-5">
-                <span class="eyebrow-badge mb-3">Operational Integrity</span>
-                <h2 class="display-section mb-3">Standards We Never Compromise</h2>
-                <p class="text-muted fs-5">
-                    Clear policies that protect your corporate reputation, investor relations, and regulatory compliance.
-                </p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="editorial-card">
-                        <div class="editorial-card-icon">
-                            <i class="bi bi-file-earmark-lock"></i>
-                        </div>
-                        <h4 class="font-serif fs-4 mb-2">Strict Confidentiality</h4>
-                        <p class="text-muted small mb-0">
-                            We execute comprehensive Non-Disclosure Agreements prior to every narrative interview, ensuring sensitive metrics and roadmap plans remain protected.
+                    <div style="border-bottom: 1px solid var(--bd); padding-bottom: 20px; margin-bottom: 20px;">
+                        <h4 style="color: var(--ac); font-size: 18px; margin-bottom: 6px;">1. 100% Client Approval</h4>
+                        <p style="color: var(--mut); font-size: 14.5px; margin: 0;">
+                            Nothing is ever submitted or published without your explicit review and signoff. You retain complete ownership over every factual statement, angle, and quote.
                         </p>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="editorial-card">
-                        <div class="editorial-card-icon">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <h4 class="font-serif fs-4 mb-2">Verified Media Indexing</h4>
-                        <p class="text-muted small mb-0">
-                            We ensure all articles are placed on reputable platforms with permanent indexing, ensuring your feature appears prominently when stakeholders search your name.
+                    <div style="border-bottom: 1px solid var(--bd); padding-bottom: 20px; margin-bottom: 20px;">
+                        <h4 style="color: var(--pu); font-size: 18px; margin-bottom: 6px;">2. Story-First Precision</h4>
+                        <p style="color: var(--mut); font-size: 14.5px; margin: 0;">
+                            We craft deeply researched, compelling narratives that journalists and readers genuinely value—not robotic or keyword-stuffed releases.
                         </p>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="editorial-card">
-                        <div class="editorial-card-icon">
-                            <i class="bi bi-patch-check"></i>
-                        </div>
-                        <h4 class="font-serif fs-4 mb-2">No Misleading Guarantees</h4>
-                        <p class="text-muted small mb-0">
-                            We promise genuine editorial placements on agreed outlets. We do not make false claims regarding algorithmic Google rankings or guaranteed investor capital.
+                    <div>
+                        <h4 style="color: #ffffff; font-size: 18px; margin-bottom: 6px;">3. Verifiable Deliverables</h4>
+                        <p style="color: var(--mut); font-size: 14.5px; margin: 0;">
+                            Live links, verified publication URLs, and permanent digital archiving. You always know exactly what your investment delivers.
                         </p>
                     </div>
                 </div>
@@ -153,17 +61,56 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section-pad-md bg-dark-editorial text-center">
-        <div class="container">
-            <h2 class="font-serif text-white fs-2 mb-3">Ready to Discuss Your Executive Narrative?</h2>
-            <p class="text-muted-editorial fs-5 mb-4 max-w-700 mx-auto">
-                Schedule a confidential consultation with our editorial team to review suitable placements for your upcoming milestones.
-            </p>
-            <a href="{{ route('contact') }}" class="btn btn-editorial-coral px-4 py-3">
-                <span>Request a Consultation</span>
-                <i class="bi bi-arrow-right"></i>
-            </a>
+    <!-- Stats Section -->
+    <section style="background: var(--cd);">
+        <div class="w">
+            <h2 class="rv">Our Impact in <i>Numbers</i></h2>
+            <p class="sub rv">A proven track record of placing category leaders where their audience reads.</p>
+
+            <div class="sts" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                <div class="st rv">
+                    <strong>3</strong>
+                    <h3>Core Markets</h3>
+                    <p>United States, United Kingdom, and Canada</p>
+                </div>
+                <div class="st rv">
+                    <strong>8+</strong>
+                    <h3>Verticals Covered</h3>
+                    <p>Tailored strategies for tech, finance, healthcare, lifestyle & entertainment</p>
+                </div>
+                <div class="st rv">
+                    <strong>950+</strong>
+                    <h3>Articles Published</h3>
+                    <p>Secured across premier digital news and magazine publications</p>
+                </div>
+                <div class="st rv">
+                    <strong>100%</strong>
+                    <h3>Approval Rate</h3>
+                    <p>Every story reviewed and authorized before it goes live</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section>
+        <div class="w">
+            <div class="cta rv">
+                <div>
+                    <span class="bd" style="border-color: var(--bd); background: none;">Work With Veyora Media</span>
+                    <h2 style="margin-top: 16px;">Ready to Put Your Brand in the <i>Spotlight?</i></h2>
+                    <p>Share your story with us, and let’s craft a media placement plan designed to accelerate your authority.</p>
+                    <div class="bt">
+                        <a class="btn bk" href="{{ route('contact') }}">Get a Quote ↗</a>
+                        <a class="btn bl" href="{{ route('services') }}">Explore Services ↗</a>
+                    </div>
+                </div>
+                <div class="fan" aria-hidden="true">
+                    <img src="{{ asset('images/covers/tech-cover.jpg') }}" alt="Tech cover">
+                    <img src="{{ asset('images/covers/finance-cover.jpg') }}" alt="Finance cover">
+                    <img src="{{ asset('images/covers/lifestyle-cover.jpg') }}" alt="Lifestyle cover">
+                </div>
+            </div>
         </div>
     </section>
 
